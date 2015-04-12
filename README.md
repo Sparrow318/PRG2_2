@@ -1,1 +1,1 @@
-2. ukol do PRG2 :pizza: :cofee:
+PRG2_2 :pizza: :cofee:
