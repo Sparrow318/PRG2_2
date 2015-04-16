@@ -4,7 +4,6 @@
 #include "stdafx.h"
 #include <stdbool.h> // Pouzivani bool v C
 #include <stdlib.h>
-#include <malloc.h>
 
 #define ARRAY_SIZE 100
 
@@ -187,6 +186,12 @@ void printAvailableMatrix(Matrix **matrix) {
 	printf("\n");
 }
 
+void freedomForMatrix(Matrix *matrix) {
+	for (int i = 0; i < matrix->cols; i++)
+		free(matrix->data[i]);
+	free(matrix->data);
+}
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 	Matrix *matrix[ARRAY_SIZE];
@@ -356,6 +361,11 @@ int _tmain(int argc, _TCHAR* argv[])
 		}
 		system("cls");
 	} while (option != 10);
+
+	for (int i = 0; i < matrixCounter; i++) {
+		freedomForMatrix(matrix[i]);
+		free(matrix[i]);
+	}
 
 	return 0;
 }
